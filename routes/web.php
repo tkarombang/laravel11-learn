@@ -33,13 +33,13 @@ Route::get('/contact', function () {
 });
 
 // Author id
-Route::get('/authors/{user}', function (User $user) {
+Route::get('/authors/{user:username}', function (User $user) {
 
-    return view('posts', ['title' => 'Articels By ' . $user->name, 'posts' => $user->posts]);
+    return view('posts', ['title' => count($user->posts) . ' Articels By ' . $user->name, 'posts' => $user->posts]);
 });
 
 // Categories
-Route::get('/categories/{category}', function (Category $category) {
+Route::get('/categories/{category:nama_category}', function (Category $category) {
 
-    return view('posts', ['title' => 'In Category ' . $category->nama_category, 'posts' => $category->posts]);
+    return view('posts', ['title' => 'Articels in: ' . $category->nama_category, 'posts' => $category->posts]);
 });
