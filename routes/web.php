@@ -18,7 +18,9 @@ Route::get('/about', function () {
 // TUGAS BUAT 2 RUTE BARU
 // 1. /Blog = menampilkan 2 buah artikel judul dan isi
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog', 'posts' => Post::all()]);
+    // $post = Post::with(['author', 'category'])->latest()->get();
+    $posts = Post::latest()->get();
+    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
 });
 
 // Rute specific Blog
@@ -34,12 +36,12 @@ Route::get('/contact', function () {
 
 // Author id
 Route::get('/authors/{user:username}', function (User $user) {
-
+    // $posts = $user->posts->load('category', 'author');
     return view('posts', ['title' => count($user->posts) . ' Articels By ' . $user->name, 'posts' => $user->posts]);
 });
 
 // Categories
 Route::get('/categories/{category:nama_category}', function (Category $category) {
-
+    // $posts = $category->posts->load('category', 'author');
     return view('posts', ['title' => 'Articels in: ' . $category->nama_category, 'posts' => $category->posts]);
 });
