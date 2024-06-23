@@ -17,22 +17,26 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'nama_category' => 'Web Developer',
-            'slug' => 'web-developer'
+            'slug' => 'web-developer',
+            'color' => 'red',
         ]);
 
         Category::create([
             'nama_category' => 'Software Tester',
-            'slug' => 'software-tester'
+            'slug' => 'software-tester',
+            'color' => 'green',
         ]);
 
         Category::create([
             'nama_category' => 'Cloud Computing',
-            'slug' => 'cloud-computing'
+            'slug' => 'cloud-computing',
+            'color' => 'blue',
         ]);
 
         Category::create([
             'nama_category' => 'Data Structure',
-            'slug' => 'data-structure'
+            'slug' => 'data-structure',
+            'color' => 'yellow'
         ]);
     }
 }
