@@ -18,9 +18,7 @@ Route::get('/about', function () {
 // TUGAS BUAT 2 RUTE BARU
 // 1. /Blog = menampilkan 2 buah artikel judul dan isi
 Route::get('/posts', function () {
-    // $post = Post::with(['author', 'category'])->latest()->get();
-    $posts = Post::latest()->get();
-    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
 });
 
 // Rute specific Blog
